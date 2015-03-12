@@ -1,0 +1,78 @@
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+#include"mouse.h"
+void main()
+{
+	int a,b,cl,i,gd=DETECT,gm,x,y,mx,my;
+	initgraph(&gd,&gm,"C:\\TURBOC3\\BGI");
+	mx=getmaxx()/2;
+	my=getmaxy()/2;
+	setbkcolor(9);
+	settextstyle(GOTHIC_FONT,HORIZ_DIR,5);
+	setcolor(15);
+	outtextxy(mx-190,my-50,"SCORE THE BOARD");
+	mx=getmaxx();
+	my=getmaxy();
+	settextstyle(TRIPLEX_FONT,HORIZ_DIR,1);
+	outtextxy(mx-250
+	,my-100,"PROJECT DONE BY");
+	outtextxy(mx-300,my-80,"M.VENKATESH & RISHAB.R.BAFNA");
+	/*sleep(5);*/
+	cleardevice();
+	a=100;
+	b=400;
+	setposi(&a,&b);
+	callmouse();
+	settextstyle(DEFAULT_FONT,HORIZ_DIR,2);
+	line(259,220,259,189);
+	line(259,189,355,189);
+	line(355,189,355,220);
+	line(259,220,355,220);
+	outtextxy(mx/2-50,my/2-40,"ENTRY");
+	line(259,230,259,260);
+	line(259,230,355,230);
+	line(355,230,355,260);
+	line(259,260,355,260);
+	outtextxy(mx/2-50,my/2,"HELP");
+	line(259,270,355,270);
+	line(355,270,355,300);
+	line(355,300,259,300);
+	line(259,300,259,270);
+	outtextxy(mx/2-50,my/2+40,"EXIT");
+	do
+	{
+	 mouseposi(&x,&y,&cl);
+	 gotoxy(10,9);
+	 printf("%d %d",x,y);
+	 if(x>=259 && x<=355 && y>=189 && y<=220 )
+	  if(cl==1 || cl==2)
+	  {
+	   cleardevice();
+	   getch();
+	  }
+	 if(x>=259 && x<=355 && y>=230 && y<=260  )
+	  if(cl==1 || cl==2)
+	  {
+	   cleardevice();
+	   getch();
+	  }
+	 if(x>=259 && x<=355 && y>=270 && y<=300)
+	  if(cl==1 || cl==2)
+	  {
+	   mousehide();
+	   cleardevice();
+	   setbkcolor(13);
+	   settextstyle(TRIPLEX_FONT,HORIZ_DIR,5);
+	   outtextxy(mx/2-150,my/2,"THANK YOU");
+	   settextstyle(SMALL_FONT,HORIZ_DIR,5);
+	   outtextxy(mx/2-150,my/2+100,"ALL COPY@RIGHTS RESERVED");
+	   sleep(2);
+	   exit();
+	  }
+	}
+	while(!kbhit());
+	mousehide();
+	getch();
+	closegraph();
+}
